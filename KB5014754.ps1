@@ -19,7 +19,7 @@ Get-AutopilotDevice | % {
     }
     $SAMAccountName = if ($deviceName.Length -ge 15) { $deviceName.Substring(0, 15) + "$" } else { $deviceName + "$" }
     try {
-        New-ADComputer -Name "$deviceName" -SAMAccountName $SAMAccountName -Path $orgUnit -ServicePrincipalNames "HOST/$deviceName", "HOST/$deviceName.DomaFFFinName.com"
+        New-ADComputer -Name "$deviceName" -SAMAccountName $SAMAccountName -Path $orgUnit -ServicePrincipalNames "HOST/$deviceName", "HOST/$deviceName.DomainName.com"
         Write-Verbose "Computer object created. ($($deviceName))" 
     }
     catch {
